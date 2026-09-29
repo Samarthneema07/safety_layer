@@ -1,0 +1,306 @@
+/* DO NOT CHANGE */
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+/* DO NOT CHANGE */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ===================== OIL SAFETY INTELLIGENCE — HUD THEME ===================== */
+@theme inline {
+  --color-hud-cyan: #2563eb;
+  --color-hud-amber: #d97706;
+  --color-hud-crimson: #dc2626;
+  --color-hud-emerald: #16a34a;
+  --color-hud-obsidian: #f8fafc;
+  --color-hud-panel: rgba(255, 255, 255, 0.9);
+  --font-display: "Orbitron", "Rajdhani", sans-serif;
+  --font-head: "Rajdhani", sans-serif;
+  --font-data: "IBM Plex Mono", monospace;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark,
+.hud {
+  --background: #f8fafc;
+  --foreground: #1e293b;
+  --card: rgba(255, 255, 255, 0.9);
+  --card-foreground: #1e293b;
+  --popover: #ffffff;
+  --popover-foreground: #1e293b;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(37, 99, 235, 0.06);
+  --secondary-foreground: #1e293b;
+  --muted: rgba(100, 116, 139, 0.06);
+  --muted-foreground: #64748b;
+  --accent: rgba(37, 99, 235, 0.08);
+  --accent-foreground: #2563eb;
+  --destructive: #dc2626;
+  --border: rgba(100, 116, 139, 0.18);
+  --input: rgba(100, 116, 139, 0.22);
+  --ring: rgba(37, 99, 235, 0.4);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not([disabled]),
+  [role="button"]:not([disabled]) {
+    cursor: pointer;
+  }
+}
+
+/* ===================== HUD UTILITIES ===================== */
+
+/* Flat, near-white surface — no grid pattern. Kept as a solid background
+   rule (rather than deleted) so existing className="hud-grid-bg" usages
+   don't need touching. */
+.hud-grid-bg {
+  background-color: #f8fafc;
+}
+
+/* Scanline and vignette overlays removed entirely — both read as CRT /
+   targeting-HUD effects rather than a professional operations dashboard.
+   Kept as no-op classes so existing usages don't need touching. */
+.hud-scanline::after {
+  content: none;
+}
+
+.hud-vignette::before {
+  content: none;
+}
+
+/* Standard elevated card: solid white, neutral border, soft neutral shadow —
+   no colored glow. This replaces the previous dark translucent "glass" look. */
+.glass {
+  background: #ffffff;
+  border: 1px solid rgba(100, 116, 139, 0.15);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+/* Status-accent cards: a slightly tinted border only — no glow shadow.
+   Signals category (info/warning/critical/success) without looking alarming. */
+.glass-cyan {
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+.glass-amber {
+  border-color: rgba(217, 119, 6, 0.4);
+}
+
+.glass-crimson {
+  border-color: rgba(220, 38, 38, 0.4);
+}
+
+.glass-emerald {
+  border-color: rgba(22, 163, 74, 0.4);
+}
+
+/* Glow text effects removed — illegible/odd on a light background. Kept as
+   no-op classes so existing usages don't need touching; text renders in its
+   already-specified color with no shadow. */
+.text-glow-cyan,
+.text-glow-amber,
+.text-glow-crimson,
+.text-glow-emerald {
+  text-shadow: none;
+}
+
+/* Softened for a light theme: a gentle shadow breathing effect rather than
+   a neon glow (still fine as a subtle "this is live" cue on the logo mark). */
+.glow-pulse {
+  animation: hudGlowPulse 2.4s ease-in-out infinite;
+}
+@keyframes hudGlowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 6px rgba(37, 99, 235, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(37, 99, 235, 0.35);
+  }
+}
+
+/* Kept at full strength intentionally — this is a genuine "needs attention"
+   signal for critical items and should still read as urgent on a light page. */
+.crit-pulse {
+  animation: critPulse 1.6s ease-in-out infinite;
+}
+@keyframes critPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 6px rgba(220, 38, 38, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(220, 38, 38, 0.6);
+  }
+}
+
+/* Moving light-sweep across cards removed — a decorative sci-fi flourish
+   that doesn't fit a clean enterprise dashboard. Kept as a no-op class so
+   existing className="hud-sweep" usages don't need touching. */
+.hud-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.hud-sweep::before {
+  content: none;
+  pointer-events: none;
+}
+
+@keyframes hudBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.hud-blink {
+  animation: hudBlink 1.4s step-end infinite;
+}
+
+@keyframes hudRadar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hud-radar {
+  animation: hudRadar 4s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes hudTicker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.hud-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: hudTicker 28s linear infinite;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+}
+.font-head {
+  font-family: var(--font-head);
+}
+.font-data {
+  font-family: var(--font-data);
+}
+
+/* Corner brackets removed — sci-fi HUD framing that doesn't fit a clean
+   enterprise dashboard. Kept as a no-op class so existing
+   className="hud-corner" usages don't need touching. */
+.hud-corner {
+  position: relative;
+}
+.hud-corner::before,
+.hud-corner::after {
+  content: none;
+}
+
+/* Progress bar: flat fill, no glow shadow. */
+.hud-progress {
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.55), currentColor);
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Scrollbar — neutral gray, matching a standard enterprise UI. */
+.hud-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.hud-scroll::-webkit-scrollbar-track {
+  background: rgba(100, 116, 139, 0.06);
+}
+.hud-scroll::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.25);
+  border-radius: 3px;
+}
